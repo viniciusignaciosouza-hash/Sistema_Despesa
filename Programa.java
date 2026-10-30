@@ -131,10 +131,12 @@ public class Programa {
             System.out.println("1 - Ver Informações da Conta 1 (" + conta.getTitular() + ")");
             System.out.println("2 - Ver Informações da Conta 2 (" + conta2.getTitular() + ")");
             System.out.println("3 - Depositar na Conta 1");
-            System.out.println("4 - Depositar na Conta 2");           
-            System.out.println("5 - Pagar Despesas da Conta 1 (" + conta.getTitular() + ")");
-            System.out.println("6 - Pagar Despesas da Conta 2 (" + conta2.getTitular() + ")");
-            System.out.println("7 - Exibir Relatório Financeiro Completo");
+            System.out.println("4 - Depositar na Conta 2");
+            System.out.println("5 - Poupar na conta " + conta.getTitular() + " (Meta)");
+            System.out.println("6 - Poupar na conta " + conta2.getTitular() + " (Meta)");            
+            System.out.println("7 - Pagar Despesas da Conta 1 (" + conta.getTitular() + ")");
+            System.out.println("8 - Pagar Despesas da Conta 2 (" + conta2.getTitular() + ")");
+            System.out.println("9 - Exibir Relatório Financeiro Completo");
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
             
@@ -166,6 +168,30 @@ public class Programa {
                     break;
 
                 case 5:
+                    System.out.print("Informe o valor a poupar para a meta (" + meta1.getNome() + "): ");
+                    double valorPoupar1 = scanner.nextDouble();
+                    if (conta.getSaldo() >= valorPoupar1) {
+                        conta.sacar(valorPoupar1);
+                        meta1.adicionarValor(valorPoupar1);
+                        System.out.println("Valor poupado com sucesso!");
+                    } else {
+                        System.out.println("Saldo insuficiente na Conta 1 para poupar esse valor!");
+                    }
+                    break;
+
+                case 6:
+                    System.out.print("Informe o valor a poupar para a meta (" + meta1.getNome() + "): ");
+                    double valorPoupar2 = scanner.nextDouble();
+                    if (conta2.getSaldo() >= valorPoupar2) {
+                        conta2.sacar(valorPoupar2);
+                        meta1.adicionarValor(valorPoupar2);
+                        System.out.println("Valor poupado com sucesso!");
+                    } else {
+                        System.out.println("Saldo insuficiente na Conta 2 para poupar esse valor!");
+                    }
+                    break;
+
+                case 7:
                     System.out.println("\n--- Pagamento de Despesas - Conta 1 (" + conta.getTitular() + ") ---");
                     System.out.println("1 - " + despesa1_conta1.getDescricao() + " (R$ " + despesa1_conta1.getValor() + ") - Status: " + despesa1_conta1.getStatus());
                     System.out.println("2 - " + despesa2_conta1.getDescricao() + " (R$ " + despesa2_conta1.getValor() + ") - Status: " + despesa2_conta1.getStatus());
@@ -179,7 +205,7 @@ public class Programa {
                     else System.out.println("Opção inválida!");
                     break;
 
-                case 6:
+                case 8:
                     System.out.println("\n--- Pagamento de Despesas - Conta 2 (" + conta2.getTitular() + ") ---");
                     System.out.println("1 - " + despesa1_conta2.getDescricao() + " (R$ " + despesa1_conta2.getValor() + ") - Status: " + despesa1_conta2.getStatus());
                     System.out.println("2 - " + despesa2_conta2.getDescricao() + " (R$ " + despesa2_conta2.getValor() + ") - Status: " + despesa2_conta2.getStatus());
@@ -193,7 +219,7 @@ public class Programa {
                     else System.out.println("Opção inválida!");
                     break;
 
-                case 7:
+                case 9:
                     System.out.println("\n===========================================");
                     System.out.println("            RELATÓRIO FINANCEIRO          ");
                     System.out.println("===========================================");
